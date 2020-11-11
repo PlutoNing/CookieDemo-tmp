@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <!-- Favicon -->
+    <style type="text/css">
+        #content_left{
+            width: 10%;
+            height: 200px;
+            /*定义浮动，不定义的话，界面会乱*/
+            float: left;}
+        #content_right{
+            width:90%;
+            height: 200px;
+            float: right;
+        }
+        #li.active1{
+            background-color: #dc3545;
+        }
+    </style>
+    <!-- Favicon -->
+    <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,600,700" rel="stylesheet">
+    <link rel="stylesheet" href="css/assets/font-awesome.min.css">
+    <link rel="stylesheet" href="css/assets/bootstrap.min.css" >
+    <link rel="stylesheet" href="css/assets/flaticon.css">
+    <link rel="stylesheet" href="css/assets/magnific-popup.css">
+    <link rel="stylesheet" href="css/assets/meanmenu.css">
+    <!-- owl carousel -->
+    <link rel="stylesheet" href="css/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/assets/owl.theme.default.min.css">
+    <!-- Main Css -->
+    <link rel="stylesheet" href="css/assets/stl.css">
+    <link rel="stylesheet" href="css/assets/rs.css">
+    <link rel="stylesheet" href="css/assets/ms.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/assets/inner-pages.css">
+    <link rel="stylesheet" href="css/assets/inner-pages-responsive.css">
+    <link rel="stylesheet" href="css/assets/wallet.css">
+    <!--    <link rel="stylesheet" href="css/assets/table.css">-->
+
+    <!--    <link rel="stylesheet" type="text/css" href="side/css1/default.css">-->
+    <!--    <link rel="stylesheet" type="text/css" href="side/css1/app.css">-->
+    <!--    <link href="http://cdn.bootcss.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">-->
+
+</head>
+<body>
+<div id="topbar">
+    <h1>
+        <a href="index.html">&nbsp;</a>
+    </h1>
+    <!--        <form th:action="@{/addressbyid}">-->
+    <!--            <input type="text" name="inputdata" placeholder="">-->
+    <!--            <input type="submit" value="search address/walletid">-->
+    <!--        </form>-->
+</div>
+<div id="main">
+<!--header-->
+    <p th:text="'Hash值为：'+${hash}" style="color: black" ></p>
+    <div class="paging">
+        Page 1 / 1
+    </div>
+
+    <table class="txs">
+        <tbody>
+        <tr>
+            <!--列名-->
+            <!--区块号 时间 输入 输出 fee size-->
+            <th width="5%" height="30"  class="STYLE6"><div align="center"><span style="color:black">交易所在块</span></div></th>
+            <th width="5%" height="30" class="STYLE6"><div align="center"><span style="color:black">交易时间</span></div></th>
+            <th width="5%" height="30" class="STYLE6"><div align="center"><span style="color:black">状态</span></div></th>
+            <th width="5%" height="30"  class="STYLE6"><div align="center"><span style="color:black">总输入</span></div></th>
+            <th width="5%" height="30" class="STYLE6"><div align="center"><span style="color:black">总输出</span></div></th>
+            <th width="5%" height="30"  class="STYLE6"><div align="center"><span style="color:black">交易费</span></div></th>
+            <th width="5%" height="30" class="STYLE6"><div align="center"><span style="color:black">交易大小(bytes)</span></div></th>
+        </tr>
+        <tr>
+
+            <td th:text="${hashinfo.getBlock()}" width="5%" height="30" class="STYLE6" align="center" style="color:black"></td>
+            <td th:text="${hashinfo.getTime()}"width="5%" height="30"  class="STYLE6" align="center" style="color:black"></td>
+
+            <td width="5%" height="30"  class="STYLE6" align="center" style="color:black">确认</td>
+
+            <td width="10% " height="20" class="STYLE6" style="color:black">
+                <div th:each="sentEntry,Stat1: ${hashinfo.getSent()}">
+                    <p th:text="${sentEntry['address']}+'&nbsp;&nbsp;&nbsp;'+${sentEntry['value']}"></p>
+                </div>
+            </td>
+
+
+<!--            <td th:text="${send}" width="5%" height="30"  class="STYLE6" align="center" style="color:black"></td>-->
+
+            <td width="10% " height="20" class="STYLE6" style="color:black">
+                <div th:each="sentEntry1,Stat2: ${hashinfo.getRecv()}">
+                    <p th:text="${sentEntry1['address']}+'&nbsp;&nbsp;&nbsp;'+${sentEntry1['value']}"></p>
+                </div>
+            </td>
+<!--            <td th:text="${recv}"width="5%" height="30"  class="STYLE6" align="center" style="color:black"></td>-->
+            <td th:text="${hashinfo.getFee()+'BTC'}" width="5%" height="30"  class="STYLE6" align="center" style="color:black"></td>
+            <td th:text="${hashinfo.getSize()}" width="5%" height="30"  class="STYLE6" align="center" style="color:black"></td>
+        </tr>
+        </tbody>
+    </table>
+    <div class="paging">
+        Page 1 / 1
+    </div>
+    <!--banner nav-->
+</div>
+<div id="foot">
+    <div style="float:right;text-align:right;">
+        <p><a target="_blank" href="https://mekltdcs.bupt.edu.cn/">版权所有 © 北京邮电大学可信分布式计算与服务教育部重点实验室 2017</a></p>
+        <p>办公地点：北京邮电大学科研大楼2层 邮编：100876</p>
+        <p>实验室信箱：北京市海淀区西土城路10号北京邮电大学205信箱</p>
+    </div>
+</div>
+</body>
+</html>

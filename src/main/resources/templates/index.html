@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <!-- Favicon -->
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,600,700" rel="stylesheet">
+    <link rel="stylesheet" href="css/assets/font-awesome.min.css">
+    <link rel="stylesheet" href="css/assets/bootstrap.min.css" >
+    <link rel="stylesheet" href="css/assets/flaticon.css">
+    <link rel="stylesheet" href="css/assets/magnific-popup.css">
+    <link rel="stylesheet" href="css/assets/meanmenu.css">
+    <!-- owl carousel -->
+    <link rel="stylesheet" href="css/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/assets/owl.theme.default.min.css">
+    <!-- Main Css -->
+    <link rel="stylesheet" href="css/assets/stl.css">
+    <link rel="stylesheet" href="css/assets/rs.css">
+    <link rel="stylesheet" href="css/assets/ms.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/assets/inner-pages.css">
+    <link rel="stylesheet" href="css/assets/inner-pages-responsive.css">
+    <link rel="stylesheet" href="css/assets/wallet.css">
+
+    <!--  下拉条Style !-->
+    <style>
+        li{
+            list-style-type: none;
+        }
+        #menu {
+            width: 370px;
+            margin: 30px auto 0px;
+            height: 45px;
+            background-color: #030e11;
+        }
+        #menu li{
+            float: left;
+            width: 92px;
+            line-height:39px;
+            text-align: center;
+            position:relative;
+            border:none;
+        }
+        #menu li a {
+            font-size:16px; color: #e6f8e9;
+            display:block;
+            outline:0;
+            text-decoration:none;
+        }
+        #menu li:hover a {
+            color: #ff0000; /*导航栏文字颜色 */
+        }
+        #menu li:hover .dropdown_1column {
+            left:0px;
+            top:38px;
+        }
+        .dropdown_1column{ /* 下拉菜单边框颜色*/
+            margin: 0px auto;
+            float: left;
+            position: absolute;
+            left: -999em;
+            text-align: left;
+            border: 1px solid #066591;
+            border-top: none;
+            background: #F4F4F4;
+            width: 140px;
+        }
+        #menu li:hover div a { /* 下拉菜单文字颜色*/
+            font-size:12px
+        ;color:#444;
+        }
+
+        #menu li:hover div a:hover{color:#21910e;} /*下拉带单鼠标停留颜色*/
+
+        #menu li ul {
+            list-style:none;padding:10px 5px;
+            margin:0;
+        }
+        #menu li ul li {
+            font-size:12px;
+            line-height:26px;
+            position:relative;
+            padding:0;margin:0;
+            float:none;
+            text-align:left;
+            width:130px;
+        }
+        #menu li ul li:hover {
+            background:none;
+            border:none;padding:0;
+            margin:0;
+        }
+    </style>
+</head>
+<body>
+    <div id="topbar">
+        <h1>
+        </h1>
+        <form th:action="@{/addressbyid}">
+            <!--下拉条-->
+            <div id="menu" style="    margin-top: 0px;margin-left: 0px;margin-right: 0px;display: inline;">
+                <ul style="display: inline">
+                    <li> <a href="/" class="nodrop">首页</a></li>
+                    <li><a href="" class="drop">个人中心</a>
+                        <div class="dropdown_1column">
+                            <div class="col_1">
+                                <ul class="simple">
+                                    <li><a th:href="${url}+'/userinfo'">个人资料</a></li>
+                                    <li><a href="/changepassword">密码管理</a></li>
+                                    <li><a href="">账号绑定</a></li>
+                                    <li><a href="/logout">退出帐号</a></li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </li>
+                    <li><a href="/logout" class="nodrop">退出</a></li>
+                </ul>
+            </div>
+            <span style="font-size: medium; color: white; ">欢迎：</span>   	<span th:text="${username}" style="font-size: medium;color: white"></span>
+
+        </form>
+    </div>
+
+    <div id="main">
+        <h3>
+
+
+
+        </h3>
+    </div>
+
+</body>
+</html>

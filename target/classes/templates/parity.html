@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parity</title>
+    <!-- Favicon -->
+    <style type="text/css">
+        #content_left{
+            width: 10%;
+            height: 200px;
+            /*定义浮动，不定义的话，界面会乱*/
+            float: left;}
+        #content_right{
+            padding: 1.3rem 2rem;
+            margin-left: 250px;
+        ;
+            /*定义浮动，不定义的话，界面会乱*/
+            float: left;}
+        #active1{
+            background-color: #dc3545;
+        }
+    </style>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,600,700" rel="stylesheet">
+    <link rel="stylesheet" href="css/assets/font-awesome.min.css">
+    <link rel="stylesheet" href="css/assets/bootstrap.min.css" >
+    <link rel="stylesheet" href="css/assets/flaticon.css">
+    <link rel="stylesheet" href="css/assets/magnific-popup.css">
+    <link rel="stylesheet" href="css/assets/meanmenu.css">
+    <!-- owl carousel -->
+    <link rel="stylesheet" href="css/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/assets/owl.theme.default.min.css">
+    <!-- Main Css -->
+    <link rel="stylesheet" href="css/assets/stl.css">
+    <link rel="stylesheet" href="css/assets/rs.css">
+    <link rel="stylesheet" href="css/assets/ms.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/assets/inner-pages.css">
+    <link rel="stylesheet" href="css/assets/inner-pages-responsive.css">
+    <link rel="stylesheet" href="css/assets/wallet.css">
+</head>
+<body>
+<div id="topbar">
+    <h1>
+        <a href="index.html">WalletExplorer.com: smart Bitcoin block explorer
+        </a>
+    </h1>
+    <form action="post">
+        <input type="text" name="q" value="">
+        <input type="submit" name="upsubmit" value="search address/walletid">
+    </form>
+</div>
+
+<div id="main">
+    <p th:text="'所属钱包ID为：'+${input}" style="color:black"></p>
+    <div class="paging">
+        Page 1 / 1
+    </div>
+    <table class="txs">
+
+        <tbody>
+        <!--每列中的元素-->
+        <!--                        <tr th:each="userEntry,userStat:${userMap}">-->
+        <!--                            <td th:text="${AddressEntry.value.date}"></td>-->
+        <tr>
+            <!--列名 序号 地址 余额 incoming txs 最后一次出现在区块中-->
+            <th width="10%" height="20"  class="STYLE6"><div align="center"><span style="color:black">地址</span></div></th>
+            <th width="10%" height="20"   class="STYLE6"><div align="center"><span style="color:black">总接受金额</span></div></th>
+            <th width="10%" height="20"  class="STYLE6"><div align="center"><span style="color:black">总发送金额</span></div></th>
+            <th width="10%" height="20"   class="STYLE6"><div align="center"><span style="color:black">总余额</span></div></th>
+            <th width="10%" height="20"  class="STYLE6"><div align="center"><span style="color:black">地址第一次出现</span></div></th>
+            <th width="10%" height="20"   class="STYLE6"><div align="center"><span style="color:black">地址最后一次出现</span></div></th>
+            <th width="10%" height="20"  class="STYLE6"><div align="center"><span style="color:black">交易数</span></div></th>
+            <th width="10%" height="20"   class="STYLE6"><div align="center"><span style="color:black">输出数目</span></div></th>
+            <th width="10%" height="20"  class="STYLE6"><div align="center"><span style="color:black">输入输目</span></div></th>
+        </tr>
+        <tr th:each="st,ob: ${list}">
+            <td th:text="${st['address']}"   width="10%" height="30" bgcolor="#EBEBEB" class="STYLE6" style="color:black"><div align="center"><span style="color:black"> </span></div></td>
+            <td th:text="${st['recv']}"   width="10%" height="30" class="STYLE6" style="color:black"><div align="center" style="color:black"><span style="color:black">预留值</span></div></td>
+            <td th:text="${st['sent']}"   width="10%" height="30" class="STYLE6" style="color:black"><div align="center" style="color:black"><span style="color:black">预留值</span></div></td>
+            <td th:text="${st['balance']}"   width="10%" height="30"  class="STYLE6" style="color:black"><div align="center" style="color:black"><span style="color:black">预留值</span></div></td>
+            <td th:text="${st['first_seen']}"width="10%" height="30"  class="STYLE6" style="color:black"><div align="center" style="color:black"><span style="color:black">预留值</span></div></td>
+            <td th:text="${st['last_seen']}" width="10%" height="30"  class="STYLE6" style="color:black"><div align="center"><span style="color:black">预留值</span></div></td>
+            <td th:text="${st['n_tx']}" width="10%" height="30"  class="STYLE6" style="color:black"><div align="center" style="color:black"><span style="color:black">预留值</span></div></td>
+            <td                              width="10%" height="30"  class="STYLE6" style="color:black"><div align="center" style="color:black"><span style="color:black">预留值</span></div></td>
+            <td                              width="10%" height="30"  class="STYLE6" style="color:black"><div align="center" style="color:black"><span style="color:black">预留值</span></div></td>
+            <!-- 此操作可以设置为删除或修改按钮-->
+        </tr>
+
+
+        </tbody>
+    </table>
+
+    <div class="modal-footer no-margin-top">
+        <ul class="pagination pull-right no-margin">
+
+            <!-- 首页 -->
+            <li>
+                <a th:href="'/list?pageNum=0'">首页</a>
+            </li>
+
+            <!-- 上一页 -->
+            <li th:if="${users.hasPrevious()}">
+                <a th:href="'/list?pageNum=' + ${users.previousPageable().getPageNumber()}" th:text="上一页"></a>
+            </li>
+
+            <!-- 中间页 -->
+            <li th:each="pageNum:${#numbers.sequence(0, users.getTotalPages() - 1)}">
+                <a th:href="'/list?pageNum=' + ${pageNum}" th:text="${pageNum + 1}" th:if="${pageNum ne users.pageable.getPageNumber()}"></a>
+                <a th:href="'/list?pageNum=' + ${pageNum}" th:text="${pageNum + 1}" th:if="${pageNum eq users.pageable.getPageNumber()}" th:style="'font-weight:bold;background: #6faed9;'"></a>
+            </li>
+
+            <!-- 下一页 -->
+            <li th:if="${users.hasNext()}">
+                <a th:href="'/list?pageNum=' + ${users.nextPageable().getPageNumber()}" th:text="下一页"></a>
+            </li>
+
+            <!-- 尾页 -->
+            <li>
+                <a th:href="'/list?pageNum=' + ${users.getTotalPages() - 1}">尾页</a>
+            </li>
+
+        </ul>
+    </div>
+
+</div>
+<div id="foot">
+    <div style="float:right;text-align:right;">
+        <p><a target="_blank" href="https://mekltdcs.bupt.edu.cn/">版权所有 © 北京邮电大学可信分布式计算与服务教育部重点实验室 2017</a></p>
+        <p>办公地点：北京邮电大学科研大楼2层 邮编：100876</p>
+        <p>实验室信箱：北京市海淀区西土城路10号北京邮电大学205信箱</p>
+    </div>
+</div>
+</body>
+</html>

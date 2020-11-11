@@ -1,0 +1,186 @@
+﻿<!DOCTYPE html>
+<html class="no-js" lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">	
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+	<!-- Favicon -->
+	
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Nunito:300,400,600,700" rel="stylesheet">
+	<link rel="stylesheet" href="css/assets/font-awesome.min.css"> 
+	<link rel="stylesheet" href="css/assets/bootstrap.min.css" >
+    <link rel="stylesheet" href="css/assets/flaticon.css">
+    <link rel="stylesheet" href="css/assets/magnific-popup.css">
+    <link rel="stylesheet" href="css/assets/meanmenu.css">
+	<!-- owl carousel -->
+	<link rel="stylesheet" href="css/assets/owl.carousel.min.css">
+	<link rel="stylesheet" href="css/assets/owl.theme.default.min.css">
+	<!-- Main Css -->
+	<link rel="stylesheet" href="css/assets/stl.css">	
+    <link rel="stylesheet" href="css/assets/rs.css">	
+    <link rel="stylesheet" href="css/assets/ms.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/assets/inner-pages.css">
+    <link rel="stylesheet" href="css/assets/inner-pages-responsive.css">
+</head>
+<body class="home-hostio" id="home-hostio">
+<!-- Preloader -->
+<div id="preloader">
+    <div id="status">&nbsp;</div>
+</div>
+<header style="background: ghostwhite">
+<!--<header class="banner-area dark-overlay">-->
+
+<!--		 nav-menu -->
+		<div class="eco_nav">
+			<div class="container">
+                <nav class="navbar navbar-expand-md navbar-light bg-faded">
+<!--					<a class="navbar-brand navbar-logo" href="index_old.html"><img src="images/logo_bupt.jpg" alt=""></a>-->
+                    <a class="navbar-brand navbar-logo" href="index_old.html"><img src="images/logo_lab.png" alt=""></a>
+                    <div class="collapse navbar-collapse main-menu" id="navbarSupportedContent">
+                        <ul class="navbar-nav nav ml-auto">
+                            <li class="nav-item p-nav"><a href="index_old.html" class="nav-link active nav-menu" style="color: black">Home</a></li>
+                            <li class="nav-item single_nav"><a th:href="@{/aboutjump}" class="nav-link nav-menu" style="color: black">About</a></li>
+                            <li class="nav-item p-nav"><a th:href="@{/contactjump}" class="nav-link nav-menu" style="color: black">Contact</a></li>
+                        </ul>
+                    </div>
+                </nav><!-- END NAVBAR -->
+            </div>
+        </div>
+	</div>
+	<!--banner area-->
+	<div class="banner-body">
+		<div class="container">
+			<div class="col-md-12">
+				<div class="banner-content text-center">
+					<h3  style="color: black">Bitcoin block explorer with address grouping and wallet labeling</h3>
+					<p  style="color: black">input a parity number or a hash string</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--banner search-->
+	<div class="banner-search-area pb-150">
+		<div class="container">
+			<div class="col-md-12">
+				<div class="search-banner pr-30 pl-30 pb-70">
+					<form th:action="@{/addressbyid}">
+					<input class="form-control search-inner" type="text" name="inputdata" placeholder="Search">
+						<div class="search-option"><i class="fa fa-angle-down "></i>
+							<select name="coin-option">
+								<option value="Bitcoin">Bitcoin</option>
+								<option value="Ether">Ether</option>
+								<option value="Litecoin">Litecoin</option>
+							</select>
+						</div>
+						<div class="search-submit">
+						<input type="submit" value="Search">
+					</div>
+					</form>
+				</div>		
+			</div>
+		</div>
+	</div>
+</header>
+<!--<a href="#intro-footer" class="icon-down myBtn"><i class="fa fa-angle-down"></i></a>-->
+<!-- End Header -->
+
+
+
+
+
+<!-- star Footer -->
+<footer class="pt-120">
+	<div class="container" id="intro-footer">
+		<div class="footer-top pb-70">
+		<div class="row">
+			<div class="col-12 col-md-6 col-lg-4">
+				<div class="footer-title">
+<!--					<img src="images/logo_bupt.jpg" alt="" class="f_logo">-->
+					<h2>预留网页名称</h2>
+					<p>网站可以用以比特币、以太币等多种币得溯源。</p>
+				</div>
+			</div>
+			<div class="col-12 col-md-6 col-lg-3">
+				<div class="footer-link">
+					<h3>Top Wallets Exchanges</h3>
+					<ul>
+						<li><a href="#">Huobi.com</a></li>
+						<li><a href="#">Bittrex.com</a></li>
+						<li><a href="#">Poloniex.com</a></li>
+						<li><a href="#">Luno.com</a></li>
+						<li><a href="#">LocalBitcoins.com</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="col-12 col-md-6 col-lg-2">
+				<div class="company-content">
+					<h3>Pools</h3>
+					<ul>
+						<li><a href="#">BTCCPool</a></li>
+						<li><a href="#">SlushPool.com</a></li>
+						<li><a href="#">AntPool.com</a></li>
+						<li><a href="#">BitMinter.com</a></li>
+						<li><a href="#">KnCMiner.com</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="col-12 col-md-6 col-lg-3">
+				<div class="newspaper-site">
+				<h3>Our Newsletters</h3>
+				<input type="email" name="email" placeholder="Email Address">
+				<div class="btn-send">
+					<a href="#">send</a>
+				</div>
+				<ul class="icon-bottom">
+					<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+					<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+					<li><a href="#"><i class="fa fa-google"></i></a></li>
+					<li><a href="#"><i class="fa fa-instagram"></i></a></li>
+				</ul>
+				</div>
+			</div>
+		</div>
+		</div>
+	</div>
+	<div class="footer-bottom">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-auto">
+					<p><a target="_blank" href="https://mekltdcs.bupt.edu.cn/">版权所有 © 北京邮电大学可信分布式计算与服务教育部重点实验室 2017</a></p>
+					<p>办公地点：北京邮电大学科研大楼2层 邮编：100876</p>
+					<p>实验室信箱：北京市海淀区西土城路10号北京邮电大学205信箱</p>
+				</div>
+<!--				<div class="col-md-6 text-right">-->
+<!--					<ul>-->
+<!--						<li><a href="">Terms and Condition</a></li>                  -->
+<!--						<li><a href="">Privecy Policy</a></li>                  -->
+<!--						<li><a href="">Refund Policy</a></li>                  -->
+<!--					</ul>-->
+<!--				</div>-->
+			</div>
+		</div>
+	</div>
+</footer><!-- End Footer -->
+
+    <!--============= { Ccroll Top} ===========-->
+    <section id="scroll-top" class="scroll-top">
+        <h2 class="disabled">&nbsp;</h2>
+        <div class="to-top pos-rtive">
+            <a href="#"><i class = "flaticon-up-arrow"></i></a>
+        </div>
+    </section>
+    
+    <!-- JavaScript Files -->
+    <script src="js/jquery-3.2.1.min.js"></script>
+	<script src="js/popper.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>    
+    <script src="js/jquery.meanmenu.min.js"></script> 	
+	<script src="js/main.js"></script>
+</body>
+</html>
+

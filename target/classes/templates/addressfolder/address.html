@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>交易展示</title>
+    <!-- Favicon -->
+    <style type="text/css">
+        #content_left{
+            width: 10%;
+            height: 200px;
+            /*定义浮动，不定义的话，界面会乱*/
+            float: left;}
+        #content_right{
+            padding: 1.3rem 2rem;
+            margin-left: 250px;
+        ;
+            /*定义浮动，不定义的话，界面会乱*/
+            float: left;}
+        #active1{
+            background-color: #dc3545;
+        }
+    </style>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,600,700" rel="stylesheet">
+    <link rel="stylesheet" href="css/assets/font-awesome.min.css">
+    <link rel="stylesheet" href="css/assets/bootstrap.min.css" >
+    <link rel="stylesheet" href="css/assets/flaticon.css">
+    <link rel="stylesheet" href="css/assets/magnific-popup.css">
+    <link rel="stylesheet" href="css/assets/meanmenu.css">
+    <!-- owl carousel -->
+    <link rel="stylesheet" href="css/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/assets/owl.theme.default.min.css">
+    <!-- Main Css -->
+    <link rel="stylesheet" href="css/assets/stl.css">
+    <link rel="stylesheet" href="css/assets/rs.css">
+    <link rel="stylesheet" href="css/assets/ms.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/assets/inner-pages.css">
+    <link rel="stylesheet" href="css/assets/inner-pages-responsive.css">
+    <link rel="stylesheet" href="css/assets/table.css">
+
+<!--left Css-->
+    <link rel="stylesheet" type="text/css" href="side/css1/default.css">
+    <link href="http://cdn.bootcss.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="side/css1/app.css" rel="stylesheet" type="text/css">
+
+</head>
+<body class="home-hostio" id="home-hostio">
+<!--Preloader-->
+<!--<div id="preloader">-->
+<!--    <div id="status">&nbsp;</div>-->
+<!--</div>-->
+<!--留下preloader会一直转圈卡-->
+<!--预留头部-->
+<header class="banner-area dark-overlay">
+    <!--banner nav-->
+    <div class="nav-header">
+        <!-- header-top -->
+        <div class="header-top">
+            <div class="container">
+                <div class="top-flex">
+                    <div class="top-area-left">
+                        <div class="left-header-top">
+                            <ul>
+                                <li class="nav-item dropdown_area">
+                                    <span>预留名称：Smart Coin Explorer</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="top-area-right text-right">
+                        <div class="right-header-top">
+                            <ul class="">
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- nav-menu -->
+        <div class="eco_nav">
+            <div class="container">
+                <nav class="navbar navbar-expand-md navbar-light bg-faded">
+                    <!--					<a class="navbar-brand navbar-logo" href="index_old.html"><img src="images/logo_bupt.jpg" alt=""></a>-->
+                    <a class="navbar-brand navbar-logo" href="../index_old.html"><img src="images/logo_lab.png" alt=""></a>
+                    <div class="collapse navbar-collapse main-menu" id="navbarSupportedContent">
+                        <ul class="navbar-nav nav ml-auto">
+                            <li class="nav-item p-nav"><a href="../index_old.html" class="nav-link active nav-menu">Home</a></li>
+                            <li class="nav-item single_nav"><a th:href="@{/aboutjump}" class="nav-link nav-menu">About</a></li>
+                            <li class="nav-item p-nav"><a th:href="@{/contactjump}" class="nav-link nav-menu">Contact</a></li>
+                        </ul>
+                    </div>
+                </nav><!-- END NAVBAR -->
+            </div>
+        </div>
+    </div>
+
+    <div id="contentWrapper">
+<!--        <div id="content_menu">-->
+        <div id="content_left">
+            <ul id="leftNavigation">
+                <li class="active"><a href="#"><i class="fa fa-coffee leftNavIcon"></i>地址关联交易</a>
+                </li>
+                <li><a th:href="@{/AddressBaseJump(input=${input},parityjumpid=${parity})}"><i class="fa fa-flask leftNavIcon"></i>地址基本信息 </a>
+                </li>
+                <li><a th:href="@{/DownChainJump(input=${input},parityjumpid=${parity})}"><i class="fa fa-truck leftNavIcon"></i>链下服务关联</a>
+                </li>
+                <li><a th:href="@{/WebRelatedJump(input=${input},parityjumpid=${parity})}"><i class="fa fa-envelope-o leftNavIcon"></i>网络身份关联</a>
+                </li>
+            </ul>
+        </div>
+        <div id="contentRight">
+            <div style="margin-right: 10%;margin-left: 0%;">
+                <div class="header-top">
+                    <div class="container">
+                        <div class="top-flex">
+                            <div class="top-area-left">
+                                <div class="left-header-top">
+                                    <div class="col-md-12">
+                                        <div class="banner-content text-left">
+                                            <ul>
+                                                <li class="nav-item dropdown_area">
+                                                    <p th:text="'输入得地址为：'+${input}" style="color: black" ></p>
+                                                    <p th:text="'所属钱包ID为：'+${parity}" style="color:black"></p>
+                                                    <a th:href="@{/testjump(parityjumpid=${parity})}" style="color: black">(show wallet addresses)</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="table-wrapper">
+                    <table class="fl-table" style="word-wrap: break-spaces">
+                        <!--<table width="100%" border="0" cellpadding="0" cellspacing="1" bgcolor="#a8c7ce" οnmοuseοver="changeto()"  οnmοuseοut="changeback()">-->
+                        <thead>
+                        <tr>
+                            <!--列名 序号 地址 余额 incoming txs 最后一次出现在区块中-->
+                            <td width="5% " height="20" bgcolor="#EBEBEB" class="STYLE6"><div align="center"><span style="color:black">交易日期</span></div></td>
+                            <td width="30%" height="20" bgcolor="d3eaef"   class="STYLE6"><div align="center"><span style="color:black">接受</span></div></td>
+                            <td width="30%" height="20" bgcolor="#EBEBEB" class="STYLE6"><div align="center"><span style="color:black">发送</span></div></td>
+                            <td width="5% " height="20" bgcolor="d3eaef"   class="STYLE6"><div align="center"><span style="color:black">余额</span></div></td>
+                            <td width="30%" height="20" bgcolor="#EBEBEB" class="STYLE6"><div align="center"><span style="color:black">交易的HASH值</span></div></td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <!--每列中的元素-->
+<!--                        <tr th:each="userEntry,userStat:${userMap}">-->
+<!--                            <td th:text="${AddressEntry.value.date}"></td>-->
+
+                        <tr th:each="AddressEntry,Stat: ${list}">
+                            <td th:text="${AddressEntry.value.date}"    width="10% " height="20"bgcolor="#EBEBEB" class="STYLE6" style="color:black"><div align="center"><span style="color:black"></span></div></td>
+                            <td th:text="${AddressEntry.value.sent}"    width="28%" height="20" bgcolor="d3eaef"  class="STYLE6" style="color:black"><div align="center"><span style="color:black"></span></div></td>
+                            <td th:text="${AddressEntry.value.recv}"    width="27%" height="20" bgcolor="#EBEBEB" class="STYLE6" style="color:black"><div align="center"><span style="color:black"></span></div></td>
+                            <td th:text="${AddressEntry.value.balance}" width="5% " height="20" bgcolor="d3eaef"  class="STYLE6" style="color:black"><div align="center"><span style="color:black"></span></div></td>
+
+                            <td width="30%" height="20" bgcolor="#EBEBEB" class="STYLE6" style="color:black"><div align="center">
+                                <a th:href="@{hashjump(hash=${AddressEntry.value.hash},send=${AddressEntry.value.sent},recv=${AddressEntry.value.recv},ParityId=${parity})}">
+                                    <span th:text="${AddressEntry.value.hash}" style="color:red"></span>
+                                </a>
+                            </div></td>
+<!--                                <a th:href="@{/hashjump}"></a>-->
+                                <!-- 此操作可以设置为删除或修改按钮-->
+                        </tr>
+                        </tbody>
+                    </table>
+<!--                    <table class="table table-striped">-->
+<!--                        <thead>-->
+<!--                        <tr>-->
+<!--                            &lt;!&ndash;列名 序号 地址 余额 incoming txs 最后一次出现在区块中&ndash;&gt;-->
+<!--                            <td ><div align="center"><span style="color:black">交易日期</span></div></td>-->
+<!--                            <td ><div align="center"><span style="color:black">接受</span></div></td>-->
+<!--                            <td ><div align="center"><span style="color:black">发送</span></div></td>-->
+<!--                            <td ><div align="center"><span style="color:black">余额</span></div></td>-->
+<!--                            <td ><div align="center"><span style="color:black">交易的HASH值</span></div></td>-->
+<!--                        </tr>-->
+<!--                        </thead>-->
+<!--                        <tbody>-->
+<!--                        &lt;!&ndash;每列中的元素&ndash;&gt;-->
+<!--                        &lt;!&ndash;                        <tr th:each="userEntry,userStat:${userMap}">&ndash;&gt;-->
+<!--                        &lt;!&ndash;                            <td th:text="${AddressEntry.value.date}"></td>&ndash;&gt;-->
+
+<!--                        <tr th:each="AddressEntry,Stat: ${list}">-->
+<!--                            <td th:text="${AddressEntry.value.date}"     style="color:black"><div align="center"><span style="color:black"></span></div></td>-->
+<!--                            <td th:text="${AddressEntry.value.sent}"     style="color:black"><div align="center"><span style="color:black"></span></div></td>-->
+<!--                            <td th:text="${AddressEntry.value.recv}"     style="color:black"><div align="center"><span style="color:black"></span></div></td>-->
+<!--                            <td th:text="${AddressEntry.value.balance}"  style="color:black"><div align="center"><span style="color:black"></span></div></td>-->
+<!--                            <td th:text="${AddressEntry.value.hash}" th:href="@{/hashjump}"  style="color:black"><div align="center"><span style="color:red"></span></div></td>-->
+<!--                            &lt;!&ndash;                                <a th:href="@{/hashjump}"></a>&ndash;&gt;-->
+<!--                            &lt;!&ndash; 此操作可以设置为删除或修改按钮&ndash;&gt;-->
+<!--                        </tr>-->
+<!--                        </tbody>-->
+<!--                    </table>-->
+                </div>
+            </div>
+
+        </div>
+    </div>
+</header>
+
+
+
+<!--下拉标签-->
+<a href="#intro-footer" class="icon-down myBtn"><i class="fa fa-angle-down"></i></a>
+
+<!--footer-->
+<footer class="pt-50">
+        <div class="container" id="intro-footer">
+            <div class="row">
+                <div class="col-md-auto">
+                    <p><a target="_blank" href="https://mekltdcs.bupt.edu.cn/">版权所有 © 北京邮电大学可信分布式计算与服务教育部重点实验室 2017</a></p>
+                    <p>办公地点：北京邮电大学科研大楼2层 邮编：100876</p>
+                    <p>实验室信箱：北京市海淀区西土城路10号北京邮电大学205信箱</p>
+                </div>
+            </div>
+        </div>
+</footer><!-- End Footer -->
+
+
+<!--============= { Ccroll Top} ===========-->
+<section id="scroll-top" class="scroll-top">
+    <h2 class="disabled">&nbsp;</h2>
+    <div class="to-top pos-rtive">
+        <a href="#"><i class = "flaticon-up-arrow"></i></a>
+    </div>
+</section>
+
+
+<!-- JavaScript Files -->
+<script src="js/jquery-3.2.1.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/owl.carousel.min.js"></script>
+<script src="js/jquery.magnific-popup.min.js"></script>
+<script src="js/jquery.meanmenu.min.js"></script>
+<script src="js/main.js"></script>
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery.ssd-vertical-navigation.min.js"></script>
+
+</body>
+
+</html>
+

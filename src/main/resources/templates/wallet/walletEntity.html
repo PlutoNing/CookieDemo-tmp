@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>钱包网络身份</title>
+    <!-- Favicon -->
+    <style type="text/css">
+        #content_left{
+            width: 10%;
+            height: 200px;
+            /*定义浮动，不定义的话，界面会乱*/
+            float: left;}
+        #content_right{
+            width:90%;
+            height: 200px;
+            float: right;
+        }
+        #li.active1{
+            background-color: #dc3545;
+        }
+    </style>
+    <!-- Favicon -->
+    <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,600,700" rel="stylesheet">
+    <link rel="stylesheet" href="css/assets/font-awesome.min.css">
+    <link rel="stylesheet" href="css/assets/bootstrap.min.css" >
+    <link rel="stylesheet" href="css/assets/flaticon.css">
+    <link rel="stylesheet" href="css/assets/magnific-popup.css">
+    <link rel="stylesheet" href="css/assets/meanmenu.css">
+    <!-- owl carousel -->
+    <link rel="stylesheet" href="css/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/assets/owl.theme.default.min.css">
+    <!-- Main Css -->
+    <link rel="stylesheet" href="css/assets/stl.css">
+    <link rel="stylesheet" href="css/assets/rs.css">
+    <link rel="stylesheet" href="css/assets/ms.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/assets/inner-pages.css">
+    <link rel="stylesheet" href="css/assets/inner-pages-responsive.css">
+    <link rel="stylesheet" href="css/assets/wallet.css">
+    <!--    <link rel="stylesheet" href="css/assets/table.css">-->
+
+    <!--    <link rel="stylesheet" type="text/css" href="side/css1/default.css">-->
+    <!--    <link rel="stylesheet" type="text/css" href="side/css1/app.css">-->
+    <!--    <link href="http://cdn.bootcss.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">-->
+
+</head>
+<body>
+<div id="topbar">
+    <h1>
+        <a th:href="@{/}">WalletExplorer.com: smart Bitcoin block explorer
+        </a>
+    </h1>
+    <form th:action="@{/addressbyid}">
+        <input type="text" name="inputdata" placeholder="">
+        <input type="hidden" name="wallet_search" placeholder="">
+        <input type="hidden" name="page_num"  placeholder="">
+        <input type="submit" value="search address/walletid">
+    </form>
+</div>
+
+<div id="main">
+    <ul id="secondbar">
+        <li><a th:href="@{/addressbyid(inputdata=${parityid},wallet_search='all',page_num=1)}"><i class="fa fa-coffee leftNavIcon"></i>钱包关联交易</a>
+        </li>
+        <!--
+        <li><a th:href="@{/jump1(parityid=${parityid})}"><i class="fa fa-flask leftNavIcon"></i>钱包基本信息 </a>
+        </li>
+        -->
+        <li><a th:href="@{/jump2(parityid=${parityid})}"><i class="fa fa-truck leftNavIcon"></i>钱包链下服务</a>
+        </li>
+        <li ><a th:href="@{/jump3(parityid=${parityid})}"><i class="fa fa-envelope-o leftNavIcon"></i>钱包网络身份</a>
+        </li>
+        <li class="active"><a th:href="@{/walletEntity(parityid=${parityid})}"><i class="fa fa-envelope-o leftNavIcon"></i>钱包交易实体</a>
+        </li>
+    </ul>
+    <br>
+
+    <p th:text="'钱包ID为：'+${parityid}" style="color:black"></p>
+
+
+    <div class="paging">
+        Page 1 / 1
+    </div>
+    <table class="txs" width="50%">
+        <tbody>
+        <tr>
+            <th width="5%" height="20"  class="STYLE6"><div align="center"><span style="color:black">服务名</span></div></th>
+            <th width="5%" height="20"  class="STYLE6"><div align="center"><span style="color:black">服务类型</span></div></th>
+            <th width="5%" height="20"  class="STYLE6"><div align="center"><span style="color:black">邮箱</span></div></th>
+            <th width="5%" height="20"  class="STYLE6"><div align="center"><span style="color:black">电话</span></div></th>
+            <th width="5%" height="20"  class="STYLE6"><div align="center"><span style="color:black">国家</span></div></th>
+        </tr>
+        <tr >
+            <td th:text="${list['entity_name']}" width="5%" height="20"  class="STYLE6" align="center" style="color:black"></td>
+            <td th:text="${list['tag']}" width="5%" height="20"  class="STYLE6" align="center" style="color:black"></td>
+            <td th:text="${list['email']}" width="5%" height="20"  class="STYLE6" align="center" style="color:black"></td>
+            <td th:text="${list['phone']}" width="5%" height="20"  class="STYLE6" align="center" style="color:black"></td>
+            <td th:text="${list['country']}" width="5%" height="20"  class="STYLE6" align="center" style="color:black"></td>
+            <!-- 此操作可以设置为删除或修改按钮-->
+        </tr>
+        </tbody>
+    </table>
+    <div class="paging">
+        Page 1 / 1
+    </div>
+</div>
+
+<div id="foot">
+    <div style="float:right;text-align:right;">
+        <p><a target="_blank" href="https://mekltdcs.bupt.edu.cn/">版权所有 © 北京邮电大学可信分布式计算与服务教育部重点实验室 2017</a></p>
+        <p>办公地点：北京邮电大学科研大楼2层 邮编：100876</p>
+        <p>实验室信箱：北京市海淀区西土城路10号北京邮电大学205信箱</p>
+    </div>
+</div>
+</body>
+</html>

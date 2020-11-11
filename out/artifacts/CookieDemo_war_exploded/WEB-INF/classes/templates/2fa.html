@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+<META HTTP-EQUIV="pragma" CONTENT="no-cache">
+<META HTTP-EQUIV="Cache-Control" CONTENT="no-store, must-revalidate">
+	<title>双重认证</title>
+<meta name="description" content="登录">
+<style>
+*{padding:0;margin:0;}
+</style>
+</head>
+<body>
+<link rel="stylesheet" type="text/css" href="/css/login/demo.css">
+<iframe src="http://www.youhutong.com/demo/top.php" width="100%" height="100%" marginwidth="0" marginheight="0" frameborder="no" border="0"></iframe>
+<!--
+<h3 style="height: 130px"><img src="/images/logo_lab.png" alt=""></a></h3>
+-->
+
+<div style="text-align:center; font-size:20px; font-weight:bold; margin-bottom:30px;">双重认证</div>
+
+<div id="main">
+
+
+
+<!-- 演示区 start -->
+
+
+
+
+<script src="/js/login/jquery.js"></script>
+
+<link rel="stylesheet" href="/css/login/style.css">
+<link rel="stylesheet" href="/css/login/iconfont.css">
+
+
+<div class="login-box" style="margin-top:50px;">
+	<div class="box-con tran">
+
+
+
+
+		<div class="login-con f-l">
+			<span th:if="${state} eq 1">
+				<div style="text-align:center; font-size:15px; margin-bottom:30px;">一条包含验证码的信息已发送至您绑定的手机号:<span th:text="${phone}" ></span>，输入验证码以继续</div>
+			</span>
+			<span th:if="${state} eq 2">
+				<div style="text-align:center; font-size:15px; margin-bottom:30px;">验证码发送失败！手机号发送频率超过限制</div>
+			</span>
+			<span th:if="${error} eq 1">
+				<span style="font-size: 12px;color: red">验证码输入错误！</span>
+			</span>
+			<form action="/send" method="post">
+				<div class="form-group">
+					<input type="text" name="code" placeholder="手机验证码">
+				</div>
+				<div class="form-group">
+					<input type="submit" value="确认">
+					<img class="loading" src="/images/login/loading.gif" style="display:none">
+				</div>
+				<div class="form-group">
+					<a href="#" onclick='window.location.href="/send"' class="move-syc a-tag tran blue-border">未收到验证码？点此重新发送 <i class="iconfont tran">&#xe606;</i></a>
+
+				</div>
+			</form>
+
+		</div>
+
+
+
+
+
+	
+
+
+
+
+
+	</div>
+</div>
+
+<script>
+var _handle='';//储存电话是否填写正确
+$(function(){
+	$(".signup-form input").on("focus",function(){
+		$(this).parent().addClass("border");
+	});
+	$(".signup-form input").on("blur",function(){
+		$(this).parent().removeClass("border");
+	})
+	//注册方式切换
+	$(".signup-select").on("click",function(){
+		var _text=$(this).text();
+		var $_input=$(this).prev();
+		$_input.val('');
+		if(_text=="手机注册"){
+			$(".signup-tel").fadeIn(200);
+			$(".signup-email").fadeOut(180);
+			$(this).text("邮箱注册");
+			$_input.attr("placeholder","手机号码");
+			$_input.attr("onblur","verify.verifyMobile(this)");
+			$(this).parents(".form-group").find(".error-notic").text("手机号码格式不正确")
+		}
+		if(_text=="邮箱注册"){
+			$(".signup-tel").fadeOut(180);
+			$(".signup-email").fadeIn(200);
+			$(this).text("手机注册");
+			$_input.attr("placeholder","邮箱");
+			$_input.attr("onblur","verify.verifyEmail(this)");
+			$(this).parents(".form-group").find(".error-notic").text("邮箱格式不正确")
+		}
+	});
+	//步骤切换
+	var _boxCon=$(".box-con");
+	$(".move-login").on("click",function(){
+		$(_boxCon).css({
+			'marginLeft':0
+		})
+	});
+	$(".move-signup").on("click",function(){
+		$(_boxCon).css({
+			'marginLeft':-320
+		})
+	});
+	$(".move-other").on("click",function(){
+		$(_boxCon).css({
+			'marginLeft':-640
+		})
+	});
+
+	$(".move-syc").on("click",function(){
+		$(_boxCon).css({
+		})
+	});
+	$(".move-reset").on("click",function(){
+		$(_boxCon).css({
+			'marginLeft':-960
+		})
+	});
+	$("body").on("click",".move-addinf",function(){
+		$(_boxCon).css({
+			'marginLeft':-1280
+		})
+	});
+	//获取短信验证码
+	var messageVerify=function (){
+		$(".get-message").on("click",function(){
+			if(_handle){
+				$("#message-inf").fadeIn(100)
+				$(this).html('<a href="javascript:;">下一步</a><img class="loading" src="../images/loading.gif">').addClass("move-addinf");
+			}
+		});
+	}();
+});
+//表单验证
+function showNotic(_this){
+	$(_this).parents(".form-group").find(".error-notic").fadeIn(100);
+    $(_this).focus();
+}
+//错误提示显示
+function hideNotic(_this){
+	$(_this).parents(".form-group").find(".error-notic").fadeOut(100);
+}
+//错误提示隐藏
+var verify={
+	verifyEmail:function(_this){
+		var validateReg = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+		var _value=$(_this).val();
+    	if(!validateReg.test(_value)){
+    		showNotic(_this)
+    	}else{
+    		hideNotic(_this)
+    	}
+	},
+	//验证邮箱
+	verifyMobile:function(_this){
+		var validateReg = /^((\+?86)|(\(\+86\)))?1\d{10}$/;
+		var _value=$(_this).val();
+    	if(!validateReg.test(_value)){
+    		showNotic(_this);
+    		_handle=false;
+    	}else{
+    		hideNotic(_this);
+    		_handle=true;
+    	}
+    	return _handle
+	},
+	//验证手机号码
+	PasswordLenght:function(_this){
+		var _length=$(_this).val().length;
+		if(_length<6){
+			showNotic(_this)
+		}else{
+    		hideNotic(_this)
+    	}
+	},
+	//验证设置密码长度
+	VerifyCount:function(_this){
+		var _count="123456";
+		var _value=$(_this).val();
+		alert(_value);
+		console.log(_value)
+		if(_value!=_count){
+			showNotic(_this)
+		}else{
+			hideNotic(_this)
+		}
+	}
+	//验证验证码
+}
+</script>
+
+
+<!-- 演示区 end -->
+
+
+<script type="text/javascript" src="/js/login/core.js"></script>
+<script type="text/javascript" src="/js/login/cipher-core.js"></script>
+<script type="text/javascript" src="/js/login/sha256.js"></script>
+<script>
+	function HashFunction(){
+		var psw=document.getElementById("raw_password").value;
+		var hash = CryptoJS.SHA256(psw).toString();
+		document.getElementById("password").value = hash;
+		console.log("hash:" + hash);
+	}
+</script>
+
+<script>
+	function HashFunction2(){
+		var psw=document.getElementById("raw_password2").value;
+		var hash = CryptoJS.SHA256(psw).toString();
+		document.getElementById("password2").value = hash;
+		console.log("hash:" + hash);
+	}
+</script>
+
+
+</div>
+<iframe src="http://www.youhutong.com/demo/footer.php" width="100%" height="100%" marginwidth="0" marginheight="0" frameborder="no" border="0"></iframe>
+</body>
+</html>

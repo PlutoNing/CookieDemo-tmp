@@ -1,0 +1,88 @@
+<html lang="zh_CN" xmlns:th="http://www.thymeleaf.org"
+      xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+    <meta charset="UTF-8"/>
+    <title>微信登录二维码</title>
+    <script src="/js/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="/js/qrcode.min.js"></script>
+    <link rel="stylesheet" href="/css/login/wxlogin.css">
+
+</head>
+<body onload="we()" style="background-color: rgb(51, 51, 51); padding: 50px;">
+
+<div class="old-template" style="">
+    <div class="main impowerBox">
+        <div class="loginPanel normalPanel">
+            <div class="title">微信登录</div>
+            <div class="waiting panelContent">
+                <input type="hidden" id="sessionId"/>
+                <div class="wrp_code" style="margin-top: 30px">
+                  <div id="qrcode" align="center"></div>
+                </div>
+                <div class="info">
+                    <div class="status status_browser js_status js_wx_default_tip normal" id="wx_default_tip">
+                        <p>请使用微信扫描二维码登录</p>
+                        <p>“区块链身份追踪系统”</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+    <script>
+        var state;
+        function checkLogin(){
+            var i = 0;
+            if(state!=""){
+                $.ajax({
+                    url: "/wechat/polling",
+                    type: "POST",
+                    data:{state:state},
+                    success: function (data) {
+                        if(data.status=="200"){
+                            window.clearInterval(c);
+/*
+                            alert(data.message);
+*/
+                            location.href = "/login";
+                        }else{
+                            i++;
+                            if(i>60){
+                                window.clearInterval(c);
+                                alert("二维码已失效！请刷新二维码。");
+                            }
+                        }
+                    }
+                });
+            }
+        }
+
+        function we(){
+
+            $.ajax({
+                url: "/wechat/wxLoginPage",
+                type: "POST",
+                success: function (data) {
+
+                    var qrcode = new QRCode(document.getElementById("qrcode"), {
+                        width : 200,
+                        height : 200
+                    });
+                    qrcode.makeCode(data.uri);
+                    state=data.state;
+                    c = setInterval(checkLogin,5000);//轮询查询
+                }
+            });
+        }
+    </script>
+
+
+</body>
+
+
+</html>

@@ -1,0 +1,200 @@
+html, body { margin: 0; padding: 0; background-color: #333; height: 100%; font-family: "Trebuchet MS", sans-serif; }
+a:hover { background-color: #5ea8ff; width: auto}
+#topbar { margin: 0; padding: 1em 1em 0; color: white; background-color: #003; text-align: right; xheight: 2.5em; }
+/*#topbar { margin: 0; padding: 1em 1em 0; color: white; background-color: #003; text-align: right; xheight: 2.5em;height:50px   }*/
+#topbar>h1 { float: left; margin: 0; padding: 0 0 0.3em; font-weight: normal; font-size: 140%; }
+#topbar>h1>a { color: yellow; text-decoration: none; font-weight: bold; }
+#topbar>h1>a:hover { text-decoration: underline; background-color: transparent; }
+#topbar>form { padding: 0.2em 0 0.3em; }
+#topbar form input[type=text] { padding: 0.2em 0.3em; color: #003; width: 40ex; font-size: 90%; border: 2px solid #fff; }
+#topbar form input[type=text]:focus { border-color: yellow; }
+#topbar form input[type=submit] { color: yellow; background-color: transparent; cursor: pointer; font-size: 100%; border: 1px solid yellow; }
+#topbar form input[type=submit]:hover { color: black; background-color: yellow; cursor: pointer; }
+
+#secondbar { margin: 0; padding: 1em 1em 0; color: white; background-color: rgba(51, 47, 49, 0); text-align: left; xheight: 2.5em; }
+#secondbar>h1 { float: left; margin: 0; padding: 0 0 0.3em; font-weight: normal; font-size: 140%; }
+#secondbar>h1>a { color: #341011; text-decoration: none; font-weight: bold; }
+#secondbar>h1>a:hover { text-decoration: underline; background-color: transparent; }
+#secondbar>ul { float: left; margin: 0; padding: 0 0 0.3em; font-weight: normal; font-size: 140%; }
+#secondbar>ul>a { color: #341011; text-decoration: none; font-weight: bold; }
+#secondbar>ul>a:hover { text-decoration: underline; background-color: transparent; }
+#secondbar, #secondbar li ul {
+    list-style: none;
+    padding: 0;
+}
+#secondbar li a {
+    font-size: 0.875rem;
+    display: block;
+    padding: 0.8rem 1rem 0.8rem 3rem;
+    color: #1b1e21;
+    border-bottom: solid 1px #395673;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    position: relative;
+    -webkit-transition: color 0.2s ease;
+    transition: color 0.2s ease;
+}
+#secondbar li a, #secondbar li a .leftNavIcon {
+    line-height: 120%;
+}
+#secondbar li a .leftNavIcon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3rem;
+    padding: 0.8rem 0;
+    text-align: center;
+}
+#secondbar li a:hover {
+    color: white;
+}
+#secondbar li ul {
+    display: none;
+    margin: 0;
+    background-color: #17232f;
+}
+#secondbar li ul li a {
+    border-bottom: solid 1px #233547;
+}
+#secondbar li ul li:last-child a {
+    border-bottom: none;
+}
+#secondbar li ul li.active a {
+    color: white;
+}
+#secondbar li.active > a {
+    color: white;
+}
+#secondbar li.active ul {
+    display: block;
+}
+#secondbar > li.active {
+    background-color: #721c24;
+}
+
+
+#thirdbar { margin: 0; padding: 1em 1em 0; color: white; background-color: rgba(51, 47, 49, 0); text-align: left; xheight: 2.5em; }
+#thirdbar>h1 { float: left; margin: 0; padding: 0 0 0.3em; font-weight: normal; font-size: 140%; }
+#thirdbar>h1>a { color: #341011; text-decoration: none; font-weight: bold; }
+#thirdbar>h1>a:hover { text-decoration: underline; background-color: transparent; }
+#thirdbar>ul { float: left; margin: 0; padding: 0 0 0.3em; font-weight: normal; font-size: 140%; }
+#thirdbar>ul>a { color: #341011; text-decoration: none; font-weight: bold; }
+#thirdbar>ul>a:hover { text-decoration: underline; background-color: transparent; }
+#thirdbar, #secondbar li ul {
+    list-style: none;
+    padding: 0;
+}
+#thirdbar li a {
+    font-size: 0.875rem;
+    display: block;
+    padding: 0.8rem 1rem 0.8rem 3rem;
+    color: #1b1e21;
+    border-bottom: solid 1px #395673;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    position: relative;
+    -webkit-transition: color 0.2s ease;
+    transition: color 0.2s ease;
+}
+#thirdbar li a, #secondbar li a .leftNavIcon {
+    line-height: 120%;
+}
+#thirdbar li a .leftNavIcon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 3rem;
+    padding: 0.8rem 0;
+    text-align: center;
+}
+#thirdbar li a:hover {
+    color: white;
+}
+#thirdbar li ul {
+    display: none;
+    margin: 0;
+    background-color: #17232f;
+}
+#thirdbar li ul li a {
+    border-bottom: solid 1px #233547;
+}
+#thirdbar li ul li:last-child a {
+    border-bottom: none;
+}
+#thirdbar li ul li.active a {
+    color: white;
+}
+#thirdbar li.active > a {
+    color: white;
+}
+#thirdbar li.active ul {
+    display: block;
+}
+#thirdbar > li.active {
+    background-color: #721c24;
+}
+
+
+
+
+
+
+
+
+
+
+
+#main { margin: 0 5% 1em; padding: 1em 1em 1.5em; background-color: #fff; }
+p.error { margin: 2em 3em; padding: 1em 2em; border: 1px solid #d00; background-color: #fdd; }
+p.note { margin: 0.5em 1.5em 2em; padding: 0.5em 1.5em; border: 1px solid #00d; background-color: #ddf; text-align: center; font-size: 80%; }
+p.note a { font-weight: bold; }
+h2 { margin: 0.5em; padding: 0; font-size: 170%; color: #030; }
+h2.main { text-align: center; margin: 1.5em 0.5em 0.5em; padding: 0; font-size: 210%; text-shadow: 0.1em 0.1em 0.1em #abd; }
+h2>small { font-size: 50%; }
+h2>.walletnote { font-size: 60%; padding-top: 0.5em; color: #000; }
+h2>.showother { padding-left: 1em; font-weight: normal; font-size: 60%; }
+
+h6>.showother { padding-left: 1em; font-weight: normal; font-size: 60%; }
+
+
+div.alternatives { margin: -0.5em 0.5em 1.5em; color: #555; font-size: 90%; }
+div.paging { max-width: 59em; }
+div.saveas { float: right; text-align: right; font-size: 90%; }
+form.main { margin: 3.5em 1em 4em; font-size: 120%; text-align: center; }
+form.main input { display: block; margin: 0 auto; }
+form.main input[type=text] { width: 40em; margin: 0.5em auto 0.3em; padding: 0.2em 0.3em; color: #003; font-size: 90%; }
+form.main input[type=submit] { padding: 0 2em; color: #003; background-color: #abd; cursor: pointer; font-size: 100%; border: 1px solid #003; }
+form.main input[type=submit]:hover { background-color: yellow; }
+span.walletcolor { display: inline-block; position: relative; top: 0.2em; width: 1em; height: 1em; margin-right: 0.4em; }
+table { border-spacing: 1px; border-collapse: collapse; }
+table th { border: 1px solid #aaa; padding: 0.3em 1em; background-color: #abd; }
+table td { border: 1px solid #aaa; padding: 0.3em 1em; font-size: 92%; }
+table.empty { margin: 0; }
+table.empty td, table.empty th { border-width: 0; padding: 0.2em 0.3em; }
+table .outnumber { color: #999; font-size: 70%; }
+table.serviceslist { margin: 0 auto; }
+table.serviceslist td { vertical-align: top; border: 1px solid #ccc; border-width: 0 1px; padding: 0; max-width: 20em; }
+table.serviceslist td h3 { margin: 0; padding: 0.5em 0.5em 0; font-size: 130%; border-bottom: 1px solid #aaa; background-color: #ddd; }
+table.serviceslist td ul { margin: 0; list-style-type: none; padding: 0.5em 1em 1em 1.5em; font-size: 90%; }
+table.serviceslist td ul li { margin: 0.2em 0; }
+table.serviceslist td ul li a { text-decoration: none; }
+table.tx>tbody>tr>th { text-align: right; font-weight: normal; }
+table.tx>tbody>tr>th>b { display: block; float: left; text-align: left; margin-right: 1em; }
+table.tx>tbody>tr>th>small { font-size: 85%; }
+table.txs td.date { font-size: 80%; color: #555; }
+table.txs td.amount { text-align: right; font-family: "Droid Sans Mono", monospace; }
+table.txs tr.sent td.diff { color: #700; }
+table.txs tr.received td.diff { color: #070; }
+table.txs td.inout table.empty td { width: 10em; }
+table.txs td.inout table.empty td.walletid { width: 12em; }
+table.txs td.txid { font-family: monospace; font-size: 80%; }
+table.info { margin: 1em 0; }
+table.info th { text-align: left; }
+table.tx td.small { font-size: 85%; }
+div.info { margin: 0em auto; padding: 0.1em; max-width: 70em; background-color: #e2e2ff; }
+div.info p { margin: 0.5em 2em 1em; }
+div.info ol { margin: 0.5em 1em 1em; }
+div.info pre { margin: 1em 3em; padding: 0.5em; background-color: #ddd; }
+div#foot { margin: -0.7em 5% 0; padding: 0 0 1em; color: #aaa; }
+div#foot a { color: yellow; text-decoration: none; }
+div#foot a:hover { text-decoration: underline; background-color: transparent; }
